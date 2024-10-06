@@ -155,27 +155,3 @@ void SerialClearSerial() {
   Serial.print("\033[2J");    // Clear the screen
   Serial.print("\033[H");     // Move cursor to the top-left corner
 }
-
-// Define the width of the Serial Monitor
-#define SERIAL_WIDTH 80
-
-void SerialTitleCentered(String message) {
-  int messageLength = message.length();
-  int paddingLength = (SERIAL_WIDTH - messageLength) / 2;
-
-  // Create the padding
-  String padding = "";
-  for (int i = 0; i < paddingLength; i++) {
-    padding += "=";
-  }
-
-  // Print the formatted title
-  Serial.println(padding + " " + message + " " + padding);
-
-  // If the width is odd and there’s a character missing at the end, add one more '='
-  if ((paddingLength * 2 + messageLength) < SERIAL_WIDTH) {
-    Serial.print("=");
-  }
-  Serial.println();
-}
-
